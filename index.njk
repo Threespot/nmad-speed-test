@@ -1,0 +1,21 @@
+---
+layout: layout.njk
+---
+<table class="leaderboard leaderboard-list">
+	<caption>Choose a category</caption>
+	<thead data-sr-only>
+		<tr>
+			<th>Category</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	{%- for key, category in sites %} 
+		<tr>
+			<td><a href="/{{ (category.name or key) | lower | slug }}/">{{ category.name or key }}</a></td>
+			<td><span class="count">×{{ category.urls.length }} site{% if category.urls.length != 1 %}s{% endif %}</span></td>
+			<td>{{ category.description }}</td>
+		</tr>
+	{%- endfor %}
+	</tbody>
+</table>
